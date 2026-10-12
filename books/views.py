@@ -5,7 +5,7 @@ from books.models import Book
 
 class BookListView(ListView):
     model = Book
-    queryset = Book.objects.all()
+    queryset = Book.objects.select_related('author')
     template_name = 'books_list.html'
     context_object_name = 'books'
     ordering = ['-published_date']
