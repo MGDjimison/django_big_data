@@ -10,6 +10,9 @@ class BookAuthor(models.Model):
 
     class Meta:
         db_table = 'book_authors'
+        indexes = [
+            models.Index(fields=['full_name']),
+        ]
 
 
 class Book(models.Model):
@@ -23,3 +26,7 @@ class Book(models.Model):
 
     class Meta:
         db_table = 'books'
+        indexes = [
+            models.Index(fields=['title']),
+            models.Index(fields=['published_date']),
+        ]
