@@ -38,9 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'books',
+    "users",
     "debug_toolbar",
     "django_style",
 ]
+
+AUTH_USER_MODEL = "users.User"
 
 STYLE_THEME = "tailwind"
 
