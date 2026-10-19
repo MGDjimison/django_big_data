@@ -7,10 +7,10 @@ from books.models import Book
 @method_decorator(cache_page(60 * 15), name='dispatch')  # Cache the view for 15 minutes
 class BookListView(ListView):
     model = Book
-    queryset = Book.objects.select_related('author').all()
+    queryset = Book.objects.select_related('author').only('title', 'author__full_name', 'published_date')
     template_name = 'books_list.html'
     context_object_name = 'books'
-    ordering = ['-published_date']
+    ordering = ['-published_date', "-pk"]
     paginate_by = 20
 
  
