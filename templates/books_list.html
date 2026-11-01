@@ -1,12 +1,8 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Books | The Reading Room</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-</head>
-<body class="min-h-screen bg-stone-100 text-stone-900 antialiased">
+{% extends "base.html" %}
+
+{% block title %}Books | The Reading Room{% endblock %}
+
+{% block content %}
     <main class="mx-auto max-w-7xl px-5 py-12 sm:px-8 lg:py-16">
         <header class="mb-10 border-b border-stone-300 pb-8 sm:mb-12 sm:flex sm:items-end sm:justify-between">
             <div>
@@ -14,7 +10,15 @@
                 <h1 class="text-4xl font-bold tracking-tight sm:text-5xl">Bookshelf</h1>
                 <p class="mt-3 max-w-xl text-base text-stone-600">A collection of stories and ideas worth spending time with.</p>
             </div>
-            <p class="mt-5 text-sm font-medium text-stone-500 sm:mt-0">{{ books|length }} books</p>
+            <div class="mt-5 flex items-center gap-5 sm:mt-0">
+                <p class="text-sm font-medium text-stone-500">{{ books|length }} books</p>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'account_logout' %}" class="text-sm text-stone-600 hover:underline">{{ user.email }}</a>
+                {% else %}
+                    <a href="{% url 'account_login' %}" class="text-sm font-semibold text-emerald-900 hover:underline">Log in</a>
+                    <a href="{% url 'account_signup' %}" class="bg-emerald-900 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-800">Sign up</a>
+                {% endif %}
+            </div>
         </header>
 
         {% if books %}
@@ -56,5 +60,4 @@
             </div>
         {% endif %}
     </main>
-</body>
-</html>
+{% endblock %}

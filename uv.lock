@@ -26,6 +26,19 @@ wheels = [
 ]
 
 [[package]]
+name = "django-allauth"
+version = "65.20.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "asgiref" },
+    { name = "django" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/a5/5f/b69a68c09c41a0c2f235996fa47aba3eb88c0810bcfc823d22459c3e235f/django_allauth-65.20.0.tar.gz", hash = "sha256:54019cd2860eef707eaaef241a6598149d2d3b6bd7e78d175089b27d57cd8d83", size = 2301827, upload-time = "2026-10-16T11:23:48.232Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/1e/86/7aa7601e64ba7bda498466ab1a8af9aa568d0f51fa106d9eb46d8a4c5a30/django_allauth-65.20.0-py3-none-any.whl", hash = "sha256:83e22cb65b742d28c49e22a2dbfb475d5ceabc844f16b7a8a5c6a2676e612e9e", size = 2077399, upload-time = "2026-10-16T11:23:44.684Z" },
+]
+
+[[package]]
 name = "django-debug-toolbar"
 version = "8.0.0"
 source = { registry = "https://pypi.org/simple" }
@@ -56,6 +69,7 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "django" },
+    { name = "django-allauth" },
     { name = "django-debug-toolbar" },
     { name = "django-style" },
     { name = "faker" },
@@ -64,6 +78,7 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "django", specifier = "==6.1.1" },
+    { name = "django-allauth", specifier = ">=65.20.0" },
     { name = "django-debug-toolbar", specifier = ">=8.0.0" },
     { name = "django-style", specifier = ">=0.3.2" },
     { name = "faker", specifier = ">=40.41.0" },

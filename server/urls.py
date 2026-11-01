@@ -17,10 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from books.views import BookListView
+from users.views import CustomSignupView, CustomLoginView
 import debug_toolbar
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('allauth.urls')),
+    path('accounts/login/', CustomLoginView.as_view(), name='account_login'),
+    path('accounts/signup/', CustomSignupView.as_view(), name='account_signup'),
     path('', BookListView.as_view(), name='book-list'),
     path('__debug__/', include(debug_toolbar.urls)),
 ]
