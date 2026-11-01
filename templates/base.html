@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}The Reading Room{% endblock %}</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="{% block body_class %}min-h-screen bg-stone-100 text-stone-900 antialiased{% endblock %}">
+    {% if messages %}
+        <ul class="fixed inset-x-0 top-4 z-10 mx-auto w-full max-w-md space-y-2 px-5 text-sm text-emerald-900" role="status">
+            {% for message in messages %}
+                <li class="border border-emerald-200 bg-white px-4 py-3 shadow-sm">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% block content %}{% endblock %}
+</body>
+</html>
