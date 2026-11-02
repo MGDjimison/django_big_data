@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from books.views import BookListView
+from books.views import BookListView, loan_book, loan_confirmed
 from users.views import CustomSignupView, CustomLoginView
 import debug_toolbar
 
@@ -25,6 +25,8 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('accounts/login/', CustomLoginView.as_view(), name='account_login'),
     path('accounts/signup/', CustomSignupView.as_view(), name='account_signup'),
+    path('books/<int:pk>/loan/', loan_book, name='book-loan'),
+    path('loans/<int:loan_id>/confirmed/', loan_confirmed, name='loan-confirmed'),
     path('', BookListView.as_view(), name='book-list'),
     path('__debug__/', include(debug_toolbar.urls)),
 ]

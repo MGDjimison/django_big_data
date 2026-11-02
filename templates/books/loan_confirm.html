@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Confirm loan | The Reading Room{% endblock %}
+{% block body_class %}flex min-h-screen items-center justify-center bg-stone-100 px-5 py-12 text-stone-900 antialiased{% endblock %}
+
+{% block content %}
+    <main class="w-full max-w-lg border border-stone-200 bg-white p-8 shadow-sm sm:p-10">
+        <p class="mb-3 text-sm font-semibold uppercase tracking-widest text-emerald-800">The Reading Room</p>
+        <h1 class="text-3xl font-bold tracking-tight">Confirm your loan</h1>
+        <p class="mt-4 text-stone-700">
+            Would you like to loan <span class="font-semibold">{{ book.title }}</span> by {{ book.author.full_name }}?
+        </p>
+        <p class="mt-2 text-sm text-stone-600">
+            A confirmation will be sent to {{ request.user.email }} after you confirm.
+        </p>
+
+        <form method="post" class="mt-8 flex flex-wrap gap-3">
+            {% csrf_token %}
+            <button type="submit" class="bg-emerald-900 px-5 py-3 text-sm font-semibold text-white hover:bg-emerald-800">Confirm loan</button>
+            <a href="{% url 'book-list' %}" class="border border-stone-300 px-5 py-3 text-sm font-semibold text-stone-700 hover:bg-stone-50">Cancel</a>
+        </form>
+    </main>
+{% endblock %}
