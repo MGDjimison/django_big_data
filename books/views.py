@@ -8,6 +8,8 @@ from django.views.decorators.cache import cache_page
 
 from books.models import Book, Loan
 
+from decouple import config
+
 @method_decorator(cache_page(60 * 15), name='dispatch')  # Cache the view for 15 minutes
 class BookListView(ListView):
     model = Book
@@ -31,7 +33,7 @@ def loan_book(request, pk):
                     f"Your loan of '{book.title}' is confirmed.\n"
                     f"Please return it by {loan.return_date:%B %d, %Y}."
                 ),
-                from_email=None,
+                from_email=config('EMAIL_HOST_USER', cast=str),
                 recipient_list=[request.user.email],
                 fail_silently=False,
             )

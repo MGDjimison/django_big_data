@@ -8,4 +8,5 @@ dependencies = [
     "django-debug-toolbar>=8.0.0",
     "django-style>=0.3.2",
     "faker>=40.41.0",
+    "python-decouple>=3.8",
 ]
